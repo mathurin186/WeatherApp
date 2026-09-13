@@ -5,6 +5,8 @@ Uses Open-Meteo (free, no API key required):
   - Weather:   https://open-meteo.com/en/docs
 """
 
+import sys
+
 import requests
 
 GEOCODE_URL = "https://geocoding-api.open-meteo.com/v1/search"
@@ -106,7 +108,10 @@ def describe_weather_code(code):
 
 
 def main():
-    city_name = input("Enter a city name: ").strip()
+    if len(sys.argv) > 1:
+        city_name = " ".join(sys.argv[1:]).strip()
+    else:
+        city_name = input("Enter a city name: ").strip()
     if not city_name:
         print("Please enter a city name.")
         return

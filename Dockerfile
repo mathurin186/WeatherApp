@@ -1,11 +1,9 @@
-FROM dhi.io/python:3.13
+FROM python:3.15-rc-slim-bookworm
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY . .
 
 RUN pip install -r requirements.txt
 
-COPY . .
-
-CMD ["python", "weather.py"]
+ENTRYPOINT ["python", "weather.py"]
